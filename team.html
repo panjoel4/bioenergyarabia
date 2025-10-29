@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <base href="/bioenergyarabia/">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Team – Your Site</title>
@@ -8,9 +9,9 @@
   <meta property="og:title" content="Team – Your Site" />
   <meta property="og:description" content="A fast, hand-editable HTML site on GitHub Pages." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="/assets/images/hero.svg" />
-  <link rel="icon" href="/assets/images/hero.svg" />
-  <link rel="stylesheet" href="/assets/styles.css" />
+  <meta property="og:image" content="assets/images/hero.svg" />
+  <link rel="icon" href="assets/images/hero.svg" />
+  <link rel="stylesheet" href="assets/styles.css" />
 </head>
 <body>
   <div id="site-header"></div>
@@ -19,29 +20,29 @@
       <h1>Our Leadership Team</h1>
 <div class="grid">
   <div class="card">
-    <img src="/assets/images/team1.svg" alt="Team member 1" />
+    <img src="assets/images/team1.svg" alt="Team member 1" />
     <h3>Member One</h3>
     <p class="small">Founder</p>
   </div>
   <div class="card">
-    <img src="/assets/images/team2.svg" alt="Team member 2" />
+    <img src="assets/images/team2.svg" alt="Team member 2" />
     <h3>Member Two</h3>
     <p class="small">CTO</p>
   </div>
   <div class="card">
-    <img src="/assets/images/team3.svg" alt="Team member 3" />
+    <img src="assets/images/team3.svg" alt="Team member 3" />
     <h3>Member Three</h3>
     <p class="small">Head of Engineering</p>
   </div>
 </div>
-<p class="small">Swap each SVG in <code>/assets/images/</code> with your real photos (JPG/PNG/WebP also fine).</p>
+<p class="small">Swap each SVG in <code>assets/images/</code> with your real photos (JPG/PNG/WebP also fine).</p>
     </div>
   </main>
   <div id="site-footer"></div>
   <script>
     Promise.all([
-      fetch('/partials/header.html').then(r=>r.text()).then(t=>document.getElementById('site-header').innerHTML=t),
-      fetch('/partials/footer.html').then(r=>r.text()).then(t=>document.getElementById('site-footer').innerHTML=t)
+      fetch('partials/header.html').then(r=>r.text()).then(t=>document.getElementById('site-header').innerHTML=t),
+      fetch('partials/footer.html').then(r=>r.text()).then(t=>document.getElementById('site-footer').innerHTML=t)
     ]);
   </script>
 </body>
