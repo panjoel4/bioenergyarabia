@@ -4,35 +4,62 @@
   <base href="/bioenergyarabia/">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>About – Your Site</title>
-  <meta name="description" content="A fast, hand-editable HTML site on GitHub Pages." />
-  <meta property="og:title" content="About – Your Site" />
-  <meta property="og:description" content="A fast, hand-editable HTML site on GitHub Pages." />
+  <title>About – Bioenergy Arabia</title>
+  <meta name="description" content="Learn about Bioenergy Arabia's mission and vision toward sustainable biodiesel solutions." />
+  <meta property="og:title" content="About – Bioenergy Arabia" />
+  <meta property="og:description" content="Learn about Bioenergy Arabia's mission and vision toward sustainable biodiesel solutions." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="assets/images/hero.svg" />
-  <link rel="icon" href="assets/images/hero.svg" />
+  <meta property="og:image" content="assets/images/biofuel-station.jpg" />
+  <link rel="icon" href="assets/images/logo.png" />
   <link rel="stylesheet" href="assets/styles.css" />
 </head>
+
 <body>
   <div id="site-header"></div>
   <main>
-    <div class="container">
-      <h1>About Us</h1>
-<p>Our mission is to transform everyday waste into clean, accessible energy for institutions around the world.</p>
-<ul>
-  <li>Engineer compact, solar-powered biodiesel systems</li>
-  <li>Convert waste cooking oil into high-quality biodiesel</li>
-  <li>Reduce reliance on fossil fuels</li>
-  <li>Support circular economy goals and ESG targets</li>
-</ul>
-<blockquote><em>"Turning waste into energy, faster than your coffee break."</em></blockquote>
+    <div class="container about-container">
+
+      <!-- Quote -->
+      <blockquote class="about-quote">
+        “Turning waste into energy, faster than your coffee break”
+      </blockquote>
+
+      <div class="about-flex">
+        <!-- Left: Image -->
+        <div class="about-image">
+          <img src="assets/images/biofuel-station.jpg" alt="Sustainable Biofuel Station" />
+        </div>
+
+        <!-- Right: Vision & Mission -->
+        <div class="about-content">
+          <h2>Vision</h2>
+          <p>
+            To lead the transition toward a circular, low-carbon future by transforming everyday waste into clean, accessible energy for institutions across the globe.
+          </p>
+
+          <h2>Mission</h2>
+          <p>
+            Our mission is to enable sustainable energy conversion through:
+          </p>
+          <ul>
+            <li>Engineer compact, solar-powered biodiesel systems</li>
+            <li>Convert waste cooking oil into high-quality biodiesel</li>
+            <li>Reduce institutional reliance on fossil fuels</li>
+            <li>Eliminate WCO disposal costs</li>
+            <li>Support circular economy goals and ESG targets</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </main>
+
   <div id="site-footer"></div>
+
   <script>
+    const v = 'v=1';
     Promise.all([
-      fetch('partials/header.html').then(r=>r.text()).then(t=>document.getElementById('site-header').innerHTML=t),
-      fetch('partials/footer.html').then(r=>r.text()).then(t=>document.getElementById('site-footer').innerHTML=t)
+      fetch('partials/header.html?' + v).then(r => r.text()).then(t => document.getElementById('site-header').innerHTML = t),
+      fetch('partials/footer.html?' + v).then(r => r.text()).then(t => document.getElementById('site-footer').innerHTML = t)
     ]);
   </script>
 </body>
