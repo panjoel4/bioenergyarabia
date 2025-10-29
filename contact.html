@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <!-- <base href="/bioenergyarabia/"> -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Contact – Bioenergy Arabia</title>
@@ -13,36 +12,9 @@
   <link rel="icon" href="assets/images/icon.png" />
   <link rel="stylesheet" href="assets/styles.css" />
 </head>
-<script>
-  const form = document.getElementById('contact-form');
-  const statusEl = document.getElementById('form-status');
 
-  form.addEventListener('submit', async (event) => {
-    event.preventDefault();
-    statusEl.textContent = 'Sending...';
-
-    try {
-      const response = await fetch(form.action, {
-        method: 'POST',
-        headers: { 'Accept': 'application/json' },
-        body: new FormData(form)
-      });
-
-      if (response.ok) {
-        form.reset();
-        statusEl.textContent = '✅ Thank you! Your message has been sent.';
-      } else {
-        const data = await response.json().catch(() => ({}));
-        statusEl.textContent = data.errors
-          ? data.errors.map(e => e.message).join(', ')
-          : '⚠️ Oops, something went wrong. Please try again.';
-      }
-    } catch (error) {
-      statusEl.textContent = '🚫 Network error. Please try again later.';
-    }
-  });
-</script>
 <body>
+  <!-- Header gets injected here -->
   <div id="site-header"></div>
 
   <main>
@@ -50,12 +22,7 @@
       <section class="contact-section">
         <h1 class="contact-title">Talk to Us</h1>
 
-        <form
-          id="contact-form"
-          class="contact-form"
-          action="https://formspree.io/f/xovpwaqy"
-          method="POST"
-        >
+        <form id="contact-form" class="contact-form" action="https://formspree.io/f/xovpwaqy" method="POST">
           <input type="hidden" name="_subject" value="New message from bioenergyarabia.com" />
 
           <div class="form-grid">
@@ -65,7 +32,7 @@
             <input type="text"  name="company" placeholder="Company Name*"  required />
           </div>
 
-          <input  type="text" name="subject"  class="form-full" placeholder="Subject" />
+          <input  type="text" name="subject" class="form-full" placeholder="Subject" />
           <textarea name="message" class="form-full" placeholder="Message*" required></textarea>
 
           <div class="contact-actions">
@@ -77,45 +44,51 @@
     </div>
   </main>
 
+  <!-- Footer gets injected here -->
   <div id="site-footer"></div>
 
-  <!-- 👇 keep scripts at the bottom -->
+  <!-- Scripts at the very end so #site-header / #site-footer exist -->
   <script>
-    // Load header and footer after DOM is ready
-    const v = 'v=1';
-    Promise.all([
-      fetch('partials/header.html?' + v)
-        .then(r => r.text())
-        .then(t => (document.getElementById('site-header').innerHTML = t)),
-      fetch('partials/footer.html?' + v)
-        .then(r => r.text())
-        .then(t => (document.getElementById('site-footer').innerHTML = t))
-    ]);
+    // Inject header/footer once DOM is ready
+    document.addEventListener('DOMContentLoaded', () => {
+      const v = 'v=2'; // cache-bust GitHub CDN
+      const headerEl = document.getElementById('site-header');
+      const footerEl = document.getElementById('site-footer');
 
-    // Formspree AJAX submission
-    const form = document.getElementById('contact-form');
-    const statusEl = document.getElementById('form-status');
+      Promise.all([
+        fetch('partials/header.html?' + v).then(r => r.ok ? r.text() : '').then(html => { if (html && headerEl) headerEl.innerHTML = html; }),
+        fetch('partials/footer.html?' + v).then(r => r.ok ? r.text() : '').then(html => { if (html && footerEl) footerEl.innerHTML = html; })
+      ]).catch(() => { /* ignore fetch errors silently */ });
 
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      statusEl.textContent = 'Sending...';
-      try {
-        const res = await fetch(form.action, {
-          method: 'POST',
-          headers: { Accept: 'application/json' },
-          body: new FormData(form)
+      // Formspree AJAX submit (stay on page)
+      const form = document.getElementById('contact-form');
+      const statusEl = document.getElementById('form-status');
+
+      if (form) {
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          if (statusEl) statusEl.textContent = 'Sending...';
+
+          try {
+            const res = await fetch(form.action, {
+              method: 'POST',
+              headers: { 'Accept': 'application/json' },
+              body: new FormData(form)
+            });
+
+            if (res.ok) {
+              form.reset();
+              if (statusEl) statusEl.textContent = '✅ Thank you! Your message has been sent.';
+            } else {
+              const data = await res.json().catch(() => ({}));
+              if (statusEl) statusEl.textContent = data.errors
+                ? data.errors.map(e => e.message).join(', ')
+                : '⚠️ Oops, something went wrong. Please try again.';
+            }
+          } catch {
+            if (statusEl) statusEl.textContent = '🚫 Network error. Please try again later.';
+          }
         });
-        if (res.ok) {
-          form.reset();
-          statusEl.textContent = '✅ Thank you! Your message has been sent.';
-        } else {
-          const data = await res.json().catch(() => ({}));
-          statusEl.textContent = data.errors
-            ? data.errors.map(e => e.message).join(', ')
-            : '⚠️ Oops, something went wrong. Please try again.';
-        }
-      } catch (err) {
-        statusEl.textContent = '🚫 Network error. Please try again later.';
       }
     });
   </script>
