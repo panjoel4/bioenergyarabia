@@ -60,6 +60,33 @@
       fetch('partials/header.html?'+v).then(r=>r.text()).then(t=>document.getElementById('site-header').innerHTML=t),
       fetch('partials/footer.html?'+v).then(r=>r.text()).then(t=>document.getElementById('site-footer').innerHTML=t)
     ]);
+
+    // Progressive enhancement: AJAX submit to keep user on the page
+    const form = document.getElementById('contact-form');
+    const statusEl = document.getElementById('form-status');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      statusEl.textContent = 'Sending...';
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: new FormData(form)
+        });
+
+        if (res.ok) {
+          form.reset();
+          statusEl.textContent = 'Thanks! Your message has been sent.';
+        } else {
+          const data = await res.json().catch(() => ({}));
+          statusEl.textContent = data.errors ? data.errors.map(e => e.message).join(', ') : 'Oops, something went wrong. Please try again.';
+        }
+      } catch (err) {
+        statusEl.textContent = 'Network error. Please try again later.';
+      }
+    });
   </script>
 </body>
 </html>
