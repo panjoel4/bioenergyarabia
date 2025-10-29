@@ -1,15 +1,11 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <base href="/bioenergyarabia/">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Home – Your Site</title>
-  <meta name="description" content="A fast, hand-editable HTML site on GitHub Pages." />
-  <meta property="og:title" content="Home – Your Site" />
-  <meta property="og:description" content="A fast, hand-editable HTML site on GitHub Pages." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="assets/images/hero.svg" />
+  <title>Home – Bioenergy Arabia</title>
+  <meta name="description" content="A compact, solar-powered biodiesel system that transforms used cooking oil into clean fuel—fast." />
+  <base href="/bioenergyarabia/">
   <link rel="icon" href="assets/images/hero.svg" />
   <link rel="stylesheet" href="assets/styles.css" />
 </head>
@@ -18,32 +14,35 @@
   <main>
     <div class="container">
       <section class="hero">
-  <h1>Reimagining Waste, Redefining Energy</h1>
-  <p>A compact, solar-powered biodiesel system that transforms used cooking oil into clean fuel—fast.</p>
-</section>
-<section class="grid">
-  <article class="card">
-    <h3>Fast Setup</h3>
-    <p>Drop-in system for institutions. Minimal footprint, maximum impact.</p>
-  </article>
-  <article class="card">
-    <h3>Circular by Design</h3>
-    <p>Turn waste oil into certified biodiesel and cut disposal costs.</p>
-  </article>
-  <article class="card">
-    <h3>Low Emissions</h3>
-    <p>Clean energy that helps you hit ESG targets sooner.</p>
-  </article>
-</section>
-<p class="small">Replace images in <code>/assets/images/</code> anytime.</p>
-<img src="assets/images/hero.svg" alt="Hero placeholder" />
+        <h1>Reimagining Waste, Redefining Energy</h1>
+        <p>A compact, solar-powered biodiesel system that transforms used cooking oil into clean fuel—fast.</p>
+      </section>
+
+      <section class="grid">
+        <article class="card">
+          <h3>Fast Setup</h3>
+          <p>Drop-in system for institutions. Minimal footprint, maximum impact.</p>
+        </article>
+        <article class="card">
+          <h3>Circular by Design</h3>
+          <p>Turn waste oil into certified biodiesel and cut disposal costs.</p>
+        </article>
+        <article class="card">
+          <h3>Low Emissions</h3>
+          <p>Clean energy that helps you hit ESG targets sooner.</p>
+        </article>
+      </section>
+
+      <p class="small">Replace images in <code>assets/images/</code> anytime.</p>
+      <img src="assets/images/hero.svg" alt="Hero placeholder" />
     </div>
   </main>
   <div id="site-footer"></div>
+
   <script>
     Promise.all([
-      fetch('partials/header.html').then(r=>r.text()).then(t=>document.getElementById('site-header').innerHTML=t),
-      fetch('partials/footer.html').then(r=>r.text()).then(t=>document.getElementById('site-footer').innerHTML=t)
+      fetch('partials/header.html').then(r => r.text()).then(t => document.getElementById('site-header').innerHTML = t),
+      fetch('partials/footer.html').then(r => r.text()).then(t => document.getElementById('site-footer').innerHTML = t)
     ]);
   </script>
 </body>
