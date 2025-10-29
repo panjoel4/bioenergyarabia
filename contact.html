@@ -50,16 +50,13 @@
       <section class="contact-section">
         <h1 class="contact-title">Talk to Us</h1>
 
-        <!-- <form class="contact-form" name="contact" method="POST" data-netlify="true">
-          <input type="hidden" name="form-name" value="contact" /> -->
-
         <form
           id="contact-form"
           class="contact-form"
           action="https://formspree.io/f/xovpwaqy"
           method="POST"
         >
-          <input type="hidden" name="_subject" value="New message from bioenergyarabia.github.io" />
+          <input type="hidden" name="_subject" value="New message from bioenergyarabia.com" />
 
           <div class="form-grid">
             <input type="text"  name="first"   placeholder="First Name*"   required />
@@ -82,37 +79,43 @@
 
   <div id="site-footer"></div>
 
+  <!-- 👇 keep scripts at the bottom -->
   <script>
-    const v='v=1';
+    // Load header and footer after DOM is ready
+    const v = 'v=1';
     Promise.all([
-      fetch('partials/header.html?'+v).then(r=>r.text()).then(t=>document.getElementById('site-header').innerHTML=t),
-      fetch('partials/footer.html?'+v).then(r=>r.text()).then(t=>document.getElementById('site-footer').innerHTML=t)
+      fetch('partials/header.html?' + v)
+        .then(r => r.text())
+        .then(t => (document.getElementById('site-header').innerHTML = t)),
+      fetch('partials/footer.html?' + v)
+        .then(r => r.text())
+        .then(t => (document.getElementById('site-footer').innerHTML = t))
     ]);
 
-    // Progressive enhancement: AJAX submit to keep user on the page
+    // Formspree AJAX submission
     const form = document.getElementById('contact-form');
     const statusEl = document.getElementById('form-status');
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       statusEl.textContent = 'Sending...';
-
       try {
         const res = await fetch(form.action, {
           method: 'POST',
-          headers: { 'Accept': 'application/json' },
+          headers: { Accept: 'application/json' },
           body: new FormData(form)
         });
-
         if (res.ok) {
           form.reset();
-          statusEl.textContent = 'Thanks! Your message has been sent.';
+          statusEl.textContent = '✅ Thank you! Your message has been sent.';
         } else {
           const data = await res.json().catch(() => ({}));
-          statusEl.textContent = data.errors ? data.errors.map(e => e.message).join(', ') : 'Oops, something went wrong. Please try again.';
+          statusEl.textContent = data.errors
+            ? data.errors.map(e => e.message).join(', ')
+            : '⚠️ Oops, something went wrong. Please try again.';
         }
       } catch (err) {
-        statusEl.textContent = 'Network error. Please try again later.';
+        statusEl.textContent = '🚫 Network error. Please try again later.';
       }
     });
   </script>
