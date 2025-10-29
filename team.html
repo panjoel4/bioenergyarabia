@@ -4,49 +4,58 @@
   <base href="/bioenergyarabia/">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Team – Your Site</title>
-  <meta name="description" content="A fast, hand-editable HTML site on GitHub Pages." />
-  <meta property="og:title" content="Team – Your Site" />
-  <meta property="og:description" content="A fast, hand-editable HTML site on GitHub Pages." />
+  <title>Team – Bioenergy Arabia</title>
+  <meta name="description" content="Meet the leadership team behind Bioenergy Arabia." />
+  <meta property="og:title" content="Team – Bioenergy Arabia" />
+  <meta property="og:description" content="Meet the leadership team behind Bioenergy Arabia." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="assets/images/hero.svg" />
-  <link rel="icon" href="assets/images/hero.svg" />
+  <meta property="og:image" content="assets/images/team-banner.jpg" />
+  <link rel="icon" href="assets/images/logo.png" />
   <link rel="stylesheet" href="assets/styles.css" />
 </head>
+
 <body>
   <div id="site-header"></div>
+
   <main>
-    <div class="container">
+    <div class="container team-section">
       <h1>Our Leadership Team</h1>
-<div class="grid">
-  <div class="card">
-    <img src="assets/images/allif.png" alt="Team member 1" />
-    <h3>Nur Allif Fathurrahman</h3>
-    <p class="small">Founder</p>
-  </div>
-  <div class="card">
-    <img src="assets/images/listya.png" alt="Team member 2" />
-    <h3>Listya Eka Anggraini</h3>
-    <p class="small">Co-Founder</p>
-  </div>
-  <div class="card">
-    <img src="assets/images/helen.png" alt="Team member 3" />
-    <h3>Anisa Helena Isma Putri</h3>
-    <p class="small">Head of Engineering</p>
-  </div>
-  <div class="card">
-    <img src="assets/images/izzul.png" alt="Team member 3" />
-    <h3>Izzul Qudsi</h3>
-    <p class="small">CTO</p>
-  </div>
-</div>
+
+      <div class="team-grid">
+        <div class="team-card">
+          <img src="assets/images/allif.png" alt="Nur Allif Fathurrahman" />
+          <h3>Nur Allif Fathurrahman</h3>
+          <p>Founder</p>
+        </div>
+
+        <div class="team-card">
+          <img src="assets/images/listya.png" alt="Listya Eka Anggraini" />
+          <h3>Listya Eka Anggraini</h3>
+          <p>Co-Founder</p>
+        </div>
+
+        <div class="team-card">
+          <img src="assets/images/helen.png" alt="Anisa Helena Isma Putri" />
+          <h3>Anisa Helena Isma Putri</h3>
+          <p>Head of Engineering</p>
+        </div>
+
+        <div class="team-card">
+          <img src="assets/images/izzul.png" alt="Izzul Qudsi" />
+          <h3>Izzul Qudsi</h3>
+          <p>CTO</p>
+        </div>
+      </div>
     </div>
   </main>
+
   <div id="site-footer"></div>
+
   <script>
+    const v = 'v=1';
     Promise.all([
-      fetch('partials/header.html').then(r=>r.text()).then(t=>document.getElementById('site-header').innerHTML=t),
-      fetch('partials/footer.html').then(r=>r.text()).then(t=>document.getElementById('site-footer').innerHTML=t)
+      fetch('partials/header.html?' + v).then(r => r.text()).then(t => document.getElementById('site-header').innerHTML = t),
+      fetch('partials/footer.html?' + v).then(r => r.text()).then(t => document.getElementById('site-footer').innerHTML = t)
     ]);
   </script>
 </body>
