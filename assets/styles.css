@@ -113,3 +113,55 @@ button:hover{background:var(--accent-2)}
   text-align:center;
   margin-top:10px;
 }
+
+
+/* ===== Contact page ===== */
+.contact-section { padding: 24px 0 40px; }
+.contact-title {
+  text-align:center;
+  font-size: clamp(28px, 5vw, 44px);
+  line-height: 1.2;
+  margin: 12px 0 24px;
+}
+
+.contact-form { max-width: 920px; margin: 0 auto; }
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* Full-width rows */
+.form-full { width: 100%; display: block; }
+
+/* Teal input look */
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+  background: #196c67;             /* teal */
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 14px 16px;
+  box-shadow: 0 6px 18px rgba(16,24,40,.10);
+}
+.contact-form input::placeholder,
+.contact-form textarea::placeholder { color: rgba(255,255,255,.9); }
+
+.contact-form textarea { min-height: 180px; resize: vertical; }
+
+/* Focus state */
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: 2px solid rgba(255,255,255,.8);
+  outline-offset: 0;
+}
+
+/* Submit button */
+.btn-large { padding: 14px 28px; font-size: 1.05rem; }
+.contact-actions { text-align: center; margin-top: 18px; }
+
+/* Responsive: single column on small screens */
+@media (max-width: 720px) {
+  .form-grid { grid-template-columns: 1fr; }
+}
