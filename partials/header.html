@@ -3,18 +3,15 @@
     <!-- Left: Brand / Logo -->
     <a class="brand" href="index.html">
       <img src="assets/images/logo.png" alt="Bioenergy Arabia logo" />
-      <!-- Optional text next to logo:
-      <span class="brand-text">THE BIOENERGY ARABIA</span>
-      -->
     </a>
 
     <!-- Right: Menu -->
     <nav aria-label="Primary">
       <ul class="menu">
-        <li><a href="index.html"   id="nav-home">Home</a></li>
-        <li><a href="about.html"   id="nav-about">About Us</a></li>
-        <li><a href="team.html"    id="nav-team">Team</a></li>
-        <li><a href="contact.html" id="nav-contact">Contact</a></li>
+        <li><a href="index.html"   id="nav-home">HOME</a></li>
+        <li><a href="about.html"   id="nav-about">ABOUT US</a></li>
+        <li><a href="team.html"    id="nav-team">TEAM</a></li>
+        <li><a href="contact.html" id="nav-contact">CONTACT</a></li>
       </ul>
     </nav>
   </div>
@@ -22,7 +19,6 @@
 
 <script>
 (function () {
-  // File-name based active state (works on project sites)
   const current = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
   const map = {
     'index.html':   '#nav-home',
@@ -31,6 +27,9 @@
     'contact.html': '#nav-contact'
   };
   const sel = map[current];
-  if (sel) document.querySelector(sel)?.setAttribute('aria-current','page');
+  if (sel) {
+    const el = document.querySelector(sel);
+    if (el) el.setAttribute('aria-current','page');
+  }
 })();
 </script>
