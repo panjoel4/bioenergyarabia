@@ -4,10 +4,10 @@
   <base href="/bioenergyarabia/">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Contact – Your Site</title>
-  <meta name="description" content="A fast, hand-editable HTML site on GitHub Pages." />
-  <meta property="og:title" content="Contact – Your Site" />
-  <meta property="og:description" content="A fast, hand-editable HTML site on GitHub Pages." />
+  <title>Contact – Bioenergy Arabia</title>
+  <meta name="description" content="Get in touch with Bioenergy Arabia." />
+  <meta property="og:title" content="Contact – Bioenergy Arabia" />
+  <meta property="og:description" content="Get in touch with Bioenergy Arabia." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="assets/images/hero.svg" />
   <link rel="icon" href="assets/images/hero.svg" />
@@ -15,28 +15,40 @@
 </head>
 <body>
   <div id="site-header"></div>
+
   <main>
     <div class="container">
-      <h1>Contact</h1>
-<p>Have a question? Fill this form (static demo) or email us at <a href="mailto:hello@example.com">hello@example.com</a>.</p>
-<form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-  <input type="hidden" name="form-name" value="contact">
-  <p><label>First Name*<br><input required type="text" name="first" /></label></p>
-  <p><label>Last Name<br><input type="text" name="last" /></label></p>
-  <p><label>Company Name*<br><input required type="text" name="company" /></label></p>
-  <p><label>Email Address*<br><input required type="email" name="email" /></label></p>
-  <p><label>Subject<br><input type="text" name="subject" /></label></p>
-  <p><label>Message*<br><textarea required name="message"></textarea></label></p>
-  <p><button type="submit">Send</button></p>
-  <p class="small">This is a static form. Connect it to your preferred form backend (Netlify Forms, Formspree, etc.)</p>
-</form>
+      <section class="contact-section">
+        <h1 class="contact-title">Talk to Us</h1>
+
+        <form class="contact-form" name="contact" method="POST" data-netlify="true">
+          <input type="hidden" name="form-name" value="contact" />
+
+          <div class="form-grid">
+            <input type="text"  name="first"   placeholder="First Name*"   required />
+            <input type="text"  name="last"    placeholder="Last Name" />
+            <input type="email" name="email"   placeholder="Email Address*" required />
+            <input type="text"  name="company" placeholder="Company Name*"  required />
+          </div>
+
+          <input  type="text" name="subject"  class="form-full" placeholder="Subject" />
+          <textarea name="message" class="form-full" placeholder="Message*" required></textarea>
+
+          <div class="contact-actions">
+            <button type="submit" class="btn-primary btn-large">Submit</button>
+          </div>
+        </form>
+      </section>
     </div>
   </main>
+
   <div id="site-footer"></div>
+
   <script>
+    const v='v=1';
     Promise.all([
-      fetch('partials/header.html').then(r=>r.text()).then(t=>document.getElementById('site-header').innerHTML=t),
-      fetch('partials/footer.html').then(r=>r.text()).then(t=>document.getElementById('site-footer').innerHTML=t)
+      fetch('partials/header.html?'+v).then(r=>r.text()).then(t=>document.getElementById('site-header').innerHTML=t),
+      fetch('partials/footer.html?'+v).then(r=>r.text()).then(t=>document.getElementById('site-footer').innerHTML=t)
     ]);
   </script>
 </body>
