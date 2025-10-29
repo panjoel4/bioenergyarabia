@@ -31,8 +31,8 @@
   <div id="site-footer"></div>
   <script>
     Promise.all([
-      fetch('/partials/header.html').then(r=>r.text()).then(t=>document.getElementById('site-header').innerHTML=t),
-      fetch('/partials/footer.html').then(r=>r.text()).then(t=>document.getElementById('site-footer').innerHTML=t)
+      fetch('partials/header.html').then(r=>r.text()).then(t=>document.getElementById('site-header').innerHTML=t),
+      fetch('partials/footer.html').then(r=>r.text()).then(t=>document.getElementById('site-footer').innerHTML=t)
     ]);
   </script>
 </body>
