@@ -227,3 +227,68 @@ button:hover{background:var(--accent-2)}
   .about-content { width: 100%; }
 }
 
+
+/* ===== Team Section ===== */
+.team-section {
+  padding: 40px 0 60px;
+}
+
+.team-section h1 {
+  text-align: left;
+  margin-bottom: 30px;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+/* Each team card */
+.team-card {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #e5e9f2;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  /* ✅ Fix equal height */
+  height: 380px; /* adjust as needed for your layout */
+  overflow: hidden;
+}
+
+/* Images uniform */
+.team-card img {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 14px;
+}
+
+/* Name & position styling */
+.team-card h3 {
+  margin: 0 0 4px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.team-card p {
+  color: #445;
+  font-size: 0.95rem;
+  text-align: center;
+  margin: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .team-card {
+    height: auto;
+  }
+}
+
