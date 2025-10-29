@@ -291,6 +291,16 @@ button:hover{background:var(--accent-2)}
   line-height: 1.4;
 }
 
+/* make full card linkable but preserve look */
+.team-card-link {
+  text-decoration: none;
+  color: inherit;
+}
+.team-card-link .team-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+
 .team-card:hover {
   transform: translateY(-6px);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
