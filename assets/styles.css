@@ -228,7 +228,7 @@ button:hover{background:var(--accent-2)}
 }
 
 
-/* ===== Team Section ===== */
+/* ===== Team Section (updated for education lines) ===== */
 .team-section {
   padding: 40px 0 60px;
 }
@@ -236,56 +236,67 @@ button:hover{background:var(--accent-2)}
 .team-section h1 {
   text-align: left;
   margin-bottom: 30px;
+  font-size: 1.8rem;
 }
 
 .team-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
+  gap: 24px;
 }
 
-/* Each team card */
 .team-card {
   background: #ffffff;
   border-radius: 16px;
   border: 1px solid #e5e9f2;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
-  padding: 18px;
+  padding: 20px 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-
-  /* ✅ Fix equal height */
-  height: 380px; /* adjust as needed for your layout */
+  height: 420px; /* Slightly taller for extra text */
   overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-/* Images uniform */
 .team-card img {
   width: 140px;
   height: 140px;
   object-fit: cover;
   border-radius: 12px;
   margin-bottom: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
-/* Name & position styling */
 .team-card h3 {
-  margin: 0 0 4px;
-  font-size: 1.1rem;
+  margin: 0;
+  font-size: 1.05rem;
   font-weight: 700;
   text-align: center;
+  color: #1a1f36;
 }
 
-.team-card p {
-  color: #445;
-  font-size: 0.95rem;
+.team-card .role {
+  color: #0f766e;
+  font-weight: 600;
+  margin-top: 4px;
+  margin-bottom: 10px;
+}
+
+.team-card .edu {
+  color: #222;
+  font-size: 0.93rem;
   text-align: center;
-  margin: 0;
+  line-height: 1.4;
 }
 
-/* Responsive adjustments */
+.team-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* Responsive */
 @media (max-width: 768px) {
   .team-card {
     height: auto;
