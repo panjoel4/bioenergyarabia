@@ -1,0 +1,25 @@
+<header class="header">
+  <div class="container">
+    <nav>
+      <a href="/" id="nav-home">Home</a>
+      <a href="/about.html" id="nav-about">About</a>
+      <a href="/team.html" id="nav-team">Team</a>
+      <a href="/contact.html" id="nav-contact">Contact</a>
+    </nav>
+  </div>
+</header>
+<script>
+// set aria-current based on location
+(function(){
+  const p = location.pathname.replace(/\/$/,'/index.html');
+  const m = {
+    "/": "#nav-home",
+    "/index.html": "#nav-home",
+    "/about.html": "#nav-about",
+    "/team.html": "#nav-team",
+    "/contact.html": "#nav-contact"
+  };
+  const sel = m[p] || null;
+  if (sel) { const el = document.querySelector(sel); if (el) el.setAttribute("aria-current","page"); }
+})();
+</script>
