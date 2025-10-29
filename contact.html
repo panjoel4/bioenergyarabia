@@ -21,8 +21,17 @@
       <section class="contact-section">
         <h1 class="contact-title">Talk to Us</h1>
 
-        <form class="contact-form" name="contact" method="POST" data-netlify="true">
-          <input type="hidden" name="form-name" value="contact" />
+        <!-- <form class="contact-form" name="contact" method="POST" data-netlify="true">
+          <input type="hidden" name="form-name" value="contact" /> -->
+
+        <form
+          class="contact-form"
+          action="https://formspree.io/f/xovpwaqy"
+          method="POST"
+          accept-charset="UTF-8"
+          id="contact-form"
+        >
+          <input type="hidden" name="_subject" value="New message from bioenergyarabia.github.io" />
 
           <div class="form-grid">
             <input type="text"  name="first"   placeholder="First Name*"   required />
@@ -37,6 +46,7 @@
           <div class="contact-actions">
             <button type="submit" class="btn-primary btn-large">Submit</button>
           </div>
+          <p id="form-status" class="small" style="text-align:center; margin-top:10px;"></p>
         </form>
       </section>
     </div>
