@@ -227,6 +227,38 @@ button:hover{background:var(--accent-2)}
   .about-content { width: 100%; }
 }
 
+/* Make the two columns equal height */
+.about-flex {
+  align-items: stretch;              /* override flex-start so both columns match height */
+}
+
+/* New video block styled like the image card, but fills height */
+.about-video {
+  flex: 1;                           /* share width with the right box (50/50) */
+  min-width: 0;                      /* prevent overflow in flex layouts */
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  background: #000;                  /* nice while video loads */
+  display: flex;                     /* let iframe stretch */
+}
+
+/* Fill the card; desktop uses full height to match the right box */
+.about-video iframe {
+  width: 100%;
+  height: 100%;                      /* equal height with .about-content */
+  border: 0;
+}
+
+/* Responsive: stack vertically and keep 16:9 */
+@media (max-width: 900px) {
+  .about-video { width: 100%; height: auto; }
+  .about-video iframe {
+    height: auto;
+    aspect-ratio: 16 / 9;            /* keep proportion on mobile */
+  }
+}
+
 
 /* ===== Team Section (updated for education lines) ===== */
 .team-section {
