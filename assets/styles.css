@@ -79,7 +79,46 @@ body{
   box-shadow:var(--shadow);
 }
 .card h3{margin:0 0 6px}
+/* center images inside feature cards */
+.card img { display: block; margin: 0 auto; width: auto; max-width: 100%; }
+/* center heading/description for specific card helper */
+.card.card-center h3,
+.card.card-center p{
+  text-align:center;
+}
+.card.card-center .lead{
+  font-weight:700;
+  font-size:1.05rem;
+  margin:10px 0 6px;
+}
+.card.card-center .sub{
+  font-style:italic;
+  font-weight:400;
+  font-size:0.92rem;
+  margin:4px 0 0;
+  color:var(--muted);
+}
+/* specific styles for the biodiesel card lead + sub lines */
+.card.card-bio .lead{
+  font-weight:700;
+  text-align:center;
+  font-size:1.05rem;
+  margin:10px 0 6px;
+}
+.card.card-bio .sub{
+  font-style:italic;
+  font-weight:400;
+  font-size:0.85rem;
+  margin:4px 0 0;
+  color:var(--muted);
+  text-align:center;
+}
+/* center the biodiesel card heading */
+.card.card-bio h3{
+  text-align:center;
+}
 .small{font-size:.92rem; color:var(--muted)}
+
 
 /* ===== Media & footer ===== */
 img{max-width:100%; height:auto; border-radius:12px; border:1px solid var(--border)}
@@ -94,6 +133,196 @@ button{
   background:var(--accent); color:#fff; font-weight:700; cursor:pointer
 }
 button:hover{background:var(--accent-2)}
+
+
+/* ===== Milestone Subsection ===== */
+.milestone {
+  margin: 48px 0 28px 0; /* increased vertical spacing */
+  padding: 0 0 0 0;
+}
+.milestone-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 20px; /* larger gap under title */
+  text-align: left;
+}
+.milestone-grid {
+  display: grid;
+  /* give the image a bit more horizontal space than the text */
+  grid-template-columns: 45% 55%;
+  gap: 40px; /* increased gap for breathing room */
+  align-items: start;
+}
+.milestone-text {
+  text-align: left;
+  max-width: 88%;
+  padding-right: 12px;
+}
+.milestone-image {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+.milestone-image img {
+  max-width: 100%;
+  /* increase visual presence while staying inside the section */
+  max-height: 380px;
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+@media (max-width: 900px) {
+  .milestone-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .milestone-image {
+    justify-content: flex-start;
+    margin-top: 10px;
+  }
+}
+
+/* ===== DTV subsection (image left, right-aligned text right) ===== */
+.dtv-section {
+  margin: 44px 0 28px 0; /* more vertical breathing room */
+}
+.dtv-grid {
+  display: grid;
+  /* make the image column slightly larger to increase picture width */
+  grid-template-columns: 60% 40%;
+  gap: 40px; /* larger horizontal gap for visual balance */
+  align-items: start;
+}
+.dtv-image {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.dtv-image img {
+  max-width: 100%;
+  /* taller image to match increased width */
+  max-height: 420px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+.dtv-text {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding-left: 12px;
+}
+.dtv-paragraph {
+  text-align: right;
+  max-width: 92%;
+  color: var(--text);
+  line-height: 1.6;
+}
+@media (max-width: 900px) {
+  .dtv-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .dtv-text { justify-content: flex-start; }
+  .dtv-paragraph { text-align: left; }
+}
+
+/* ===== Our Initiatives subsection ===== */
+.initiatives {
+  margin: 36px 0 18px 0;
+}
+.initiatives-title {
+  font-size: clamp(1.6rem, 3.8vw, 2.4rem);
+  font-weight: 800;
+  margin: 0 0 12px 0;
+  text-align: left;
+}
+.initiatives-content {
+  max-width: 760px;
+  text-align: left;
+  color: var(--text);
+  line-height: 1.6;
+}
+@media (max-width: 720px) {
+  .initiatives { margin: 28px 0; }
+  .initiatives-content { max-width: 100%; }
+}
+
+/* ===== BIBAN subsection (left text, right image) ===== */
+.biban-section {
+  margin: 36px 0 18px 0;
+}
+.biban-grid {
+  display: grid;
+  /* left paragraph up to center line, image occupies right half */
+  grid-template-columns: 48% 52%;
+  gap: 36px;
+  align-items: start;
+}
+.biban-text {
+  text-align: left;
+  max-width: 92%; /* keep paragraph from exceeding center line */
+}
+.biban-image {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+.biban-image img {
+  max-width: 100%;
+  max-height: 380px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+@media (max-width: 900px) {
+  .biban-grid { grid-template-columns: 1fr; gap: 18px; }
+  .biban-image { justify-content: flex-start; }
+  .biban-text { max-width: 100%; }
+}
+
+/* ===== Ministry subsection (left image, right-aligned text right) ===== */
+.ministry-section {
+  margin: 36px 0 18px 0;
+}
+.ministry-grid {
+  display: grid;
+  /* left image, right-aligned paragraph occupies right half */
+  grid-template-columns: 48% 52%;
+  gap: 36px;
+  align-items: start;
+}
+.ministry-image {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.ministry-image img {
+  max-width: 100%;
+  max-height: 380px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+.ministry-text {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding-left: 12px;
+}
+.ministry-text p {
+  text-align: right;
+  max-width: 92%; /* keep paragraph from exceeding center line */
+  color: var(--text);
+  line-height: 1.6;
+}
+@media (max-width: 900px) {
+  .ministry-grid { grid-template-columns: 1fr; gap: 18px; }
+  .ministry-image { justify-content: flex-start; }
+  .ministry-text { justify-content: flex-start; padding-left: 0; }
+  .ministry-text p { text-align: left; max-width: 100%; }
+}
+
 
 /* ===== Benefit button ===== */
 .btn-primary{
@@ -118,6 +347,7 @@ button:hover{background:var(--accent-2)}
 
 /* ===== Contact page ===== */
 .contact-section { padding: 24px 0 40px; }
+.card .lead{font-weight:700; text-align:center; margin:10px 0 8px}
 .contact-title {
   text-align:center;
   font-size: clamp(28px, 5vw, 44px);
@@ -302,6 +532,21 @@ button:hover{background:var(--accent-2)}
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
+/* Slight zoom for a specific team photo without changing the layout size
+   - keep the image element the same 140x140 size so the card layout doesn't shift
+   - use transform: scale to visually enlarge the photo
+   - allow this card to show the expanded image without cropping via overflow: visible
+*/
+.zoom-card { overflow: visible; }
+.zoom-card .zoom-photo {
+  display: block;
+  width: 140px; /* keep layout size */
+  height: 140px;
+  transform: scale(1);
+  transform-origin: center center;
+  transition: transform .25s ease;
+}
+
 .team-card h3 {
   margin: 0;
   font-size: 1.05rem;
@@ -345,4 +590,3 @@ button:hover{background:var(--accent-2)}
     height: auto;
   }
 }
-
