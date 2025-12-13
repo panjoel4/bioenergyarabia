@@ -28,6 +28,10 @@ body{
 /* ===== Layout helpers ===== */
 .container{max-width:1100px;margin:0 auto;padding:0 20px}
 
+main {
+  margin-top: 0;  /* No extra margin needed since we removed body padding */
+}
+
 /* ===== Header ===== */
 .site-header {
   background: var(--surface);  /* Changed from var(--card) to var(--surface) for consistency */
