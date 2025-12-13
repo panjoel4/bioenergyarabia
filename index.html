@@ -376,33 +376,29 @@
   <div id="site-footer"></div> 
 
   <script>
-    // Wait for DOM to be fully loaded
-    document.addEventListener('DOMContentLoaded', function() {
-      // Header and Footer loading
-      Promise.all([
-        fetch('partials/header.html').then(r => r.text()).then(t => document.getElementById('site-header').innerHTML = t),
-        fetch('partials/footer.html').then(r => r.text()).then(t => document.getElementById('site-footer').innerHTML = t)
-      ]).then(() => {
-        // Wait a bit for the header to be fully rendered
-        setTimeout(() => {
-          initHeaderFunctionality();
-        }, 100);
-      });
-
-      // Initialize other functionalities
-      initSlideshow();
-      initContactForm();
+    // Load header and footer first
+    Promise.all([
+      fetch('partials/header.html').then(r => r.text()).then(t => {
+        document.getElementById('site-header').innerHTML = t;
+      }),
+      fetch('partials/footer.html').then(r => r.text()).then(t => {
+        document.getElementById('site-footer').innerHTML = t;
+      })
+    ]).then(() => {
+      // After header loads, initialize its functionality
+      setTimeout(initHeaderFunctionality, 200);
     });
 
     // Header functionality
     function initHeaderFunctionality() {
       const header = document.getElementById('mainHeader');
+      
       if (!header) {
         console.error('Header not found!');
         return;
       }
 
-      console.log('Header initialized successfully');
+      console.log('Header initialized!');
 
       // Shrinking header on scroll
       function handleScroll() {
@@ -419,21 +415,22 @@
       handleScroll(); // Call once on load
 
       // Smooth scroll for anchor links
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-          e.preventDefault();
-          const targetId = this.getAttribute('href');
-          const target = document.querySelector(targetId);
-          if (target) {
-            const headerHeight = header.offsetHeight;
-            const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
-            window.scrollTo({
-              top: targetPosition,
-              behavior: 'smooth'
-            });
-          }
+      setTimeout(() => {
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+              const headerHeight = header.offsetHeight;
+              const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
+              window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+              });
+            }
+          });
         });
-      });
+      }, 100);
 
       // Highlight active section on scroll
       const sections = document.querySelectorAll('section[id]');
@@ -445,7 +442,7 @@
         
         sections.forEach(section => {
           const sectionTop = section.offsetTop - headerHeight - 100;
-          if (pageYOffset >= sectionTop) {
+          if (window.pageYOffset >= sectionTop) {
             current = section.getAttribute('id');
           }
         });
@@ -460,7 +457,7 @@
 
       window.addEventListener('scroll', highlightNav);
       
-      // Set home as active by default on page load if at top
+      // Set home as active by default if at top
       if (window.pageYOffset < 100) {
         const homeLink = document.querySelector('#nav-home');
         if (homeLink) {
@@ -501,14 +498,13 @@
       showSlide(slideIndex = n);
     }
 
-    function initSlideshow() {
-      showSlide(slideIndex);
-      
-      // Auto-advance slides every 5 seconds
-      setInterval(() => {
-        changeSlide(1);
-      }, 5000);
-    }
+    // Initialize slideshow after DOM loads
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(() => {
+        showSlide(slideIndex);
+        setInterval(() => changeSlide(1), 5000);
+      }, 500);
+    });
 
     // Floating Menu Toggle
     function toggleFloatingMenu() {
@@ -533,44 +529,46 @@
     });
 
     // Contact Form functionality
-    function initContactForm() {
-      const contactForm = document.getElementById('contactForm');
-      if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-          e.preventDefault();
-          
-          const formMessage = document.getElementById('formMessage');
-          const formData = new FormData(this);
-          
-          const name = formData.get('name');
-          const email = formData.get('email');
-          const subject = formData.get('subject');
-          const message = formData.get('message');
-          
-          if (!name || !email || !subject || !message) {
-            formMessage.className = 'form-message error';
-            formMessage.textContent = 'Please fill in all required fields.';
-            return;
-          }
-          
-          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-          if (!emailRegex.test(email)) {
-            formMessage.className = 'form-message error';
-            formMessage.textContent = 'Please enter a valid email address.';
-            return;
-          }
-          
-          formMessage.className = 'form-message success';
-          formMessage.textContent = 'Thank you for your message! We will get back to you soon.';
-          
-          this.reset();
-          
-          setTimeout(() => {
-            formMessage.style.display = 'none';
-          }, 5000);
-        });
-      }
-    }
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(() => {
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+          contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formMessage = document.getElementById('formMessage');
+            const formData = new FormData(this);
+            
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const subject = formData.get('subject');
+            const message = formData.get('message');
+            
+            if (!name || !email || !subject || !message) {
+              formMessage.className = 'form-message error';
+              formMessage.textContent = 'Please fill in all required fields.';
+              return;
+            }
+            
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+              formMessage.className = 'form-message error';
+              formMessage.textContent = 'Please enter a valid email address.';
+              return;
+            }
+            
+            formMessage.className = 'form-message success';
+            formMessage.textContent = 'Thank you for your message! We will get back to you soon.';
+            
+            this.reset();
+            
+            setTimeout(() => {
+              formMessage.style.display = 'none';
+            }, 5000);
+          });
+        }
+      }, 500);
+    });
   </script>
 </body>
 </html>

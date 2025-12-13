@@ -34,14 +34,14 @@ main {
 
 /* ===== Header ===== */
 .site-header {
-  background: var(--surface);  /* Changed from var(--card) to var(--surface) for consistency */
+  background: var(--surface);
   box-shadow: var(--shadow);
   position: sticky;
   top: 0;
   z-index: 999;
   transition: all 0.3s ease;
   padding: 12px 0;
-  width: 100%;  /* Ensure full width */
+  width: 100%;
 }
 
 .site-header.scrolled {
