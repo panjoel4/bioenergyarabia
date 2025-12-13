@@ -505,7 +505,7 @@ button:hover{background:var(--accent-2)}
 
 .contact-item {
   padding: 16px;
-  background: var(--card);
+  background: var(--surface);
   border-radius: 8px;
   border: 1px solid var(--border);
 }
@@ -534,7 +534,7 @@ button:hover{background:var(--accent-2)}
 }
 
 .contact-form-wrapper {
-  background: var(--card);
+  background: var(--surface);
   padding: 32px;
   border-radius: 12px;
   border: 1px solid var(--border);
@@ -935,7 +935,7 @@ button:hover{background:var(--accent-2)}
 }
 
 .overview-video {
-  background: var(--card);
+  background: var(--surface);
   border-radius: 12px;
   padding: 20px;
   box-shadow: var(--shadow);
@@ -1044,7 +1044,7 @@ button:hover{background:var(--accent-2)}
 }
 
 .product-card {
-  background: var(--card);
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 32px;
@@ -1216,7 +1216,7 @@ button:hover{background:var(--accent-2)}
 }
 
 .team-member {
-  background: var(--card);
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 24px;
@@ -1367,7 +1367,7 @@ button:hover{background:var(--accent-2)}
   align-items: center;
   gap: 12px;
   padding: 12px 20px;
-  background: var(--card);
+  background: var(--surface);
   color: var(--text);
   text-decoration: none;
   border-radius: 30px;
