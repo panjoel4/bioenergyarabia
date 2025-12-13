@@ -10,6 +10,7 @@
   --accent-2:#0e9f6e;       /* brighter teal (hover) */
   --pill:#eef7f6;           /* nav pill bg on hover */
   --shadow:0 6px 18px rgba(16, 24, 40, .08);
+  --header-height: 72px;  /* default, updated by JS */
 }
 
 /* ===== Reset & base ===== */
@@ -32,16 +33,18 @@ main {
   margin-top: 0;  /* No extra margin needed since we removed body padding */
 }
 
-/* ===== Header ===== */
+/* ===== Header (fixed + shrink) ===== */
 .site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
   background: var(--surface);
   box-shadow: var(--shadow);
-  position: sticky;
-  top: 0;
-  z-index: 999;
-  transition: all 0.3s ease;
+  z-index: 1000;
+  transition: padding 0.25s ease, box-shadow 0.25s ease;
   padding: 12px 0;
-  width: 100%;
 }
 
 .site-header.scrolled {
@@ -66,10 +69,9 @@ main {
 }
 
 .brand img {
-  height: 60px;
+  height: 60px;   /* smaller logo */
   width: auto;
-  display: block;
-  transition: all 0.3s ease;
+  transition: height 0.25s ease;
 }
 
 .site-header.scrolled .brand img {
@@ -81,40 +83,17 @@ main {
   letter-spacing: .3px;
 }
 
-.menu {
-  display: flex;
-  gap: 18px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  align-items: center;
-}
-
+.menu { display:flex; gap:18px; list-style:none; margin:0; padding:0; align-items:center; }
 .menu a {
-  display: inline-block;
-  padding: 10px 18px;
-  text-decoration: none;
-  color: var(--text);
-  font-weight: 600;
-  border-radius: 20px;
-  transition: all 0.3s ease;
-  font-size: 0.95rem;
+  display:inline-block; padding:10px 18px; text-decoration:none;
+  color:var(--text); font-weight:600; border-radius:20px; transition:all 0.2s ease; font-size:.95rem;
 }
+.site-header.scrolled .menu a { padding:8px 16px; font-size:.9rem; }
+.menu a:hover { background:var(--pill); color:var(--accent); }
+.menu a[aria-current="page"] { background:var(--accent); color:#fff; }
 
-.site-header.scrolled .menu a {
-  padding: 8px 16px;
-  font-size: 0.9rem;
-}
-
-.menu a:hover {
-  background: var(--pill);
-  color: var(--accent);
-}
-
-.menu a[aria-current="page"] {
-  background: var(--accent);
-  color: white;
-}
+/* Push page content below fixed header */
+body { padding-top: var(--header-height); }
 
 /* ===== Smooth Scroll Offset ===== */
 html {
