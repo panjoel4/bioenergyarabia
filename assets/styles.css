@@ -18,7 +18,7 @@ html,body{margin:0;padding:0}
 body{
   font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
   color:var(--text);
-  padding-top:70px;
+  padding-top:0;  /* Remove the padding that creates space */
   background:
     radial-gradient(1200px 600px at -10% -10%, #ffffff 0%, transparent 60%),
     radial-gradient(1200px 600px at 110% -10%, #ffffff 0%, transparent 60%),
@@ -30,13 +30,14 @@ body{
 
 /* ===== Header ===== */
 .site-header {
-  background: var(--card);
+  background: var(--surface);  /* Changed from var(--card) to var(--surface) for consistency */
   box-shadow: var(--shadow);
   position: sticky;
   top: 0;
   z-index: 999;
   transition: all 0.3s ease;
   padding: 12px 0;
+  width: 100%;  /* Ensure full width */
 }
 
 .site-header.scrolled {
