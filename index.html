@@ -663,9 +663,9 @@
         videoGallery.classList.add('active');
         photoGallery.classList.remove('active');
         tabs[1].classList.add('active');
-        // Stop photo slideshow, start video slideshow
+        // Stop photo slideshow, no auto-advance for videos
         clearInterval(photoInterval);
-        startVideoSlideshow();
+        // startVideoSlideshow(); // Disabled to allow manual control only
       }
     }
 
@@ -739,11 +739,12 @@
       showVideoSlide(videoSlideIndex = n);
     }
 
-    function startVideoSlideshow() {
-      videoInterval = setInterval(() => {
-        changeVideoSlide(1);
-      }, 8000);
-    }
+    // Video slideshow auto-advance disabled to allow users to watch videos
+    // function startVideoSlideshow() {
+    //   videoInterval = setInterval(() => {
+    //     changeVideoSlide(1);
+    //   }, 8000);
+    // }
 
     // Initialize photo slideshow on page load
     document.addEventListener('DOMContentLoaded', function() {

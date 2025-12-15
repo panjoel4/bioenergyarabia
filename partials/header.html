@@ -3,7 +3,15 @@
     <a class="brand" href="#home">
       <img src="assets/images/logo.png" alt="Bioenergy Arabia logo" />
     </a>
-    <nav aria-label="Primary">
+    
+    <!-- Hamburger Menu Button -->
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    
+    <nav aria-label="Primary" id="nav-menu">
       <ul class="menu">
         <li><a href="#home" id="nav-home">HOME</a></li>
         <li><a href="#about-us" id="nav-about">ABOUT US</a></li>
@@ -17,6 +25,28 @@
 
 <script>
 (function () {
+  // Hamburger menu toggle
+  const hamburger = document.getElementById('hamburger');
+  const navMenu = document.getElementById('nav-menu');
+  
+  if (hamburger && navMenu) {
+    hamburger.addEventListener('click', function() {
+      hamburger.classList.toggle('active');
+      navMenu.classList.toggle('active');
+      document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : 'auto';
+    });
+    
+    // Close menu when clicking on a link
+    const menuLinks = navMenu.querySelectorAll('a');
+    menuLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      });
+    });
+  }
+  
   // Shrinking header on scroll
   const header = document.getElementById('mainHeader');
   let lastScroll = 0;
