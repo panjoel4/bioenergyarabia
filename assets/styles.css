@@ -69,9 +69,11 @@ main {
 }
 
 .brand img {
-  height: 60px;   /* smaller logo */
+  height: 70px;   /* smaller logo */
   width: auto;
   transition: height 0.25s ease;
+  border: none;
+  outline: none;
 }
 
 .site-header.scrolled .brand img {
@@ -1029,7 +1031,7 @@ button:hover{background:var(--accent-2)}
   padding: 32px;
   box-shadow: var(--shadow);
   display: grid;
-  grid-template-columns: 300px 1fr;
+  grid-template-columns: 500px 1fr;
   gap: 40px;
   align-items: center;
 }
@@ -1041,11 +1043,12 @@ button:hover{background:var(--accent-2)}
 }
 
 .product-image img {
-  max-width: 250px;
-  width: 100%;
+  max-height: 450px;
+  width: auto;
   height: auto;
   border: none;
-  border-radius: 0;
+  /* border-radius: 8px; */
+  /* object-fit: contain; */
 }
 
 .product-content {
@@ -1091,6 +1094,37 @@ button:hover{background:var(--accent-2)}
   margin: 24px 0 0 0;
   text-align: left;
   line-height: 1.6;
+}
+
+.product-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+  padding: 12px 24px;
+  background: var(--accent);
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(15, 118, 110, 0.2);
+}
+
+.product-cta:hover {
+  background: var(--accent-2);
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(15, 118, 110, 0.3);
+}
+
+.cta-arrow {
+  font-size: 1.1rem;
+  transition: transform 0.3s ease;
+}
+
+.product-cta:hover .cta-arrow {
+  transform: translateX(4px);
 }
 
 /* Navigation Buttons */
