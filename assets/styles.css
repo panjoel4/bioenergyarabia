@@ -108,16 +108,6 @@ main {
   z-index: 1001;
 }
 
-/* Desktop nav stays normal */
-nav {
-  position: static;
-  width: auto;
-  height: auto;
-  background: transparent;
-  transform: none;
-  padding: 0;
-}
-
 .hamburger span {
   width: 100%;
   height: 3px;
