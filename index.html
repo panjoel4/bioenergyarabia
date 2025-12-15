@@ -293,6 +293,141 @@
         </div>
       </section>
 
+      <!-- Media Gallery Section -->
+      <section id="media" class="media-section">
+        <h2 class="section-title">MEDIA GALLERY</h2>
+        
+        <!-- Gallery Tabs -->
+        <div class="gallery-tabs">
+          <button class="gallery-tab active" onclick="switchGalleryTab('photos')">Photos</button>
+          <button class="gallery-tab" onclick="switchGalleryTab('videos')">Videos</button>
+        </div>
+
+        <!-- Photo Gallery -->
+        <div id="photo-gallery" class="gallery-content active">
+          <div class="photo-slideshow">
+            <div class="photo-slides">
+              <!-- Slide 1 -->
+              <div class="photo-slide active">
+                <div class="gallery-grid">
+                  <div class="gallery-item" onclick="openLightbox('assets/gallery/picture/1.JPG')">
+                    <img src="assets/gallery/picture/1.JPG" alt="Gallery Image 1">
+                    <div class="gallery-overlay"><span>🔍</span></div>
+                  </div>
+                  <div class="gallery-item" onclick="openLightbox('assets/gallery/picture/2.png')">
+                    <img src="assets/gallery/picture/2.png" alt="Gallery Image 2">
+                    <div class="gallery-overlay"><span>🔍</span></div>
+                  </div>
+                  <div class="gallery-item" onclick="openLightbox('assets/gallery/picture/3.png')">
+                    <img src="assets/gallery/picture/3.png" alt="Gallery Image 3">
+                    <div class="gallery-overlay"><span>🔍</span></div>
+                  </div>
+                </div>
+              </div>
+              <!-- Slide 2 -->
+              <div class="photo-slide">
+                <div class="gallery-grid">
+                  <div class="gallery-item" onclick="openLightbox('assets/gallery/picture/Greentown.JPG')">
+                    <img src="assets/gallery/picture/Greentown.JPG" alt="Greentown">
+                    <div class="gallery-overlay"><span>🔍</span></div>
+                  </div>
+                  <div class="gallery-item" onclick="openLightbox('assets/gallery/picture/IDF 1.jpg')">
+                    <img src="assets/gallery/picture/IDF 1.jpg" alt="IDF Event">
+                    <div class="gallery-overlay"><span>🔍</span></div>
+                  </div>
+                  <div class="gallery-item" onclick="openLightbox('assets/gallery/picture/Linkedin 3.png')">
+                    <img src="assets/gallery/picture/Linkedin 3.png" alt="LinkedIn Post">
+                    <div class="gallery-overlay"><span>🔍</span></div>
+                  </div>
+                </div>
+              </div>
+              <!-- Slide 3 -->
+              <div class="photo-slide">
+                <div class="gallery-grid">
+                  <div class="gallery-item" onclick="openLightbox('assets/gallery/picture/RETI 1.jpeg')">
+                    <img src="assets/gallery/picture/RETI 1.jpeg" alt="RETI Event">
+                    <div class="gallery-overlay"><span>🔍</span></div>
+                  </div>
+                  <div class="gallery-item" onclick="openLightbox('assets/gallery/picture/SCACSI 2.png')">
+                    <img src="assets/gallery/picture/SCACSI 2.png" alt="SCACSI Event">
+                    <div class="gallery-overlay"><span>🔍</span></div>
+                  </div>
+                  <div class="gallery-item" onclick="openLightbox('assets/gallery/picture/Visitor 3.png')">
+                    <img src="assets/gallery/picture/Visitor 3.png" alt="Visitor">
+                    <div class="gallery-overlay"><span>🔍</span></div>
+                  </div>
+                </div>
+              </div>
+              <!-- Slide 4 -->
+              <div class="photo-slide">
+                <div class="gallery-grid">
+                  <div class="gallery-item" onclick="openLightbox('assets/gallery/picture/Visitor 4.png')">
+                    <img src="assets/gallery/picture/Visitor 4.png" alt="Visitor">
+                    <div class="gallery-overlay"><span>🔍</span></div>
+                  </div>
+                  <div class="gallery-item" onclick="openLightbox('assets/gallery/picture/Winner 2.JPG')">
+                    <img src="assets/gallery/picture/Winner 2.JPG" alt="Winner">
+                    <div class="gallery-overlay"><span>🔍</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Navigation Controls -->
+            <button class="gallery-nav prev" onclick="changePhotoSlide(-1)">❮</button>
+            <button class="gallery-nav next" onclick="changePhotoSlide(1)">❯</button>
+            <!-- Dots Indicator -->
+            <div class="gallery-dots">
+              <span class="gallery-dot active" onclick="currentPhotoSlide(1)"></span>
+              <span class="gallery-dot" onclick="currentPhotoSlide(2)"></span>
+              <span class="gallery-dot" onclick="currentPhotoSlide(3)"></span>
+              <span class="gallery-dot" onclick="currentPhotoSlide(4)"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video Gallery -->
+        <div id="video-gallery" class="gallery-content">
+          <div class="video-slideshow">
+            <div class="video-slides">
+              <!-- Video Slide 1 -->
+              <div class="video-slide">
+                <div class="video-item">
+                  <video controls>
+                    <source src="assets/gallery/video/Interview with Tech Revolt Media.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>
+                  <p class="video-title">Interview with Tech Revolt Media</p>
+                </div>
+              </div>
+              <!-- Video Slide 3 -->
+              <div class="video-slide">
+                <div class="video-item">
+                  <video controls>
+                    <source src="assets/gallery/video/Mobile Microwave Unit for Sustainable On-Site Biofuel Production - The Bioenergy Arabia.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>
+                  <p class="video-title">Mobile Microwave Unit for Sustainable On-Site Biofuel Production</p>
+                </div>
+              </div>
+            </div>
+            <!-- Navigation Controls -->
+            <button class="gallery-nav prev" onclick="changeVideoSlide(-1)">❮</button>
+            <button class="gallery-nav next" onclick="changeVideoSlide(1)">❯</button>
+            <!-- Dots Indicator -->
+            <div class="gallery-dots">
+              <span class="gallery-dot active" onclick="currentVideoSlide(1)"></span>
+              <span class="gallery-dot" onclick="currentVideoSlide(2)"></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Lightbox -->
+      <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close">&times;</span>
+        <img id="lightbox-img" src="" alt="">
+      </div>
+
       <!-- Contact Section -->
       <section id="contact-us" class="contact-section">
         <h2 class="contact-title">CONTACT US</h2>
@@ -497,6 +632,139 @@
       if (floatingCta && !floatingCta.contains(event.target) && menu && menu.classList.contains('active')) {
         menu.classList.remove('active');
         toggle.classList.remove('active');
+      }
+    });
+
+    // Gallery functionality
+    let photoSlideIndex = 1;
+    let videoSlideIndex = 1;
+    let photoInterval;
+    let videoInterval;
+
+    function switchGalleryTab(tab) {
+      const photoGallery = document.getElementById('photo-gallery');
+      const videoGallery = document.getElementById('video-gallery');
+      const tabs = document.querySelectorAll('.gallery-tab');
+      
+      tabs.forEach(t => t.classList.remove('active'));
+      
+      if (tab === 'photos') {
+        photoGallery.classList.add('active');
+        videoGallery.classList.remove('active');
+        tabs[0].classList.add('active');
+        // Stop video slideshow, start photo slideshow
+        clearInterval(videoInterval);
+        startPhotoSlideshow();
+      } else {
+        videoGallery.classList.add('active');
+        photoGallery.classList.remove('active');
+        tabs[1].classList.add('active');
+        // Stop photo slideshow, start video slideshow
+        clearInterval(photoInterval);
+        startVideoSlideshow();
+      }
+    }
+
+    // Photo slideshow functions
+    function showPhotoSlide(n) {
+      const slides = document.getElementsByClassName('photo-slide');
+      const dots = document.querySelectorAll('#photo-gallery .gallery-dot');
+      
+      if (slides.length === 0) return;
+      
+      if (n > slides.length) { photoSlideIndex = 1 }
+      if (n < 1) { photoSlideIndex = slides.length }
+      
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].classList.remove('active');
+      }
+      
+      for (let i = 0; i < dots.length; i++) {
+        dots[i].classList.remove('active');
+      }
+      
+      slides[photoSlideIndex - 1].classList.add('active');
+      dots[photoSlideIndex - 1].classList.add('active');
+    }
+
+    function changePhotoSlide(n) {
+      showPhotoSlide(photoSlideIndex += n);
+    }
+
+    function currentPhotoSlide(n) {
+      showPhotoSlide(photoSlideIndex = n);
+    }
+
+    function startPhotoSlideshow() {
+      photoInterval = setInterval(() => {
+        changePhotoSlide(1);
+      }, 5000);
+    }
+
+    // Video slideshow functions
+    function showVideoSlide(n) {
+      const slides = document.getElementsByClassName('video-slide');
+      const dots = document.querySelectorAll('#video-gallery .gallery-dot');
+      
+      if (slides.length === 0) return;
+      
+      if (n > slides.length) { videoSlideIndex = 1 }
+      if (n < 1) { videoSlideIndex = slides.length }
+      
+      // Pause all videos
+      const videos = document.querySelectorAll('#video-gallery video');
+      videos.forEach(v => v.pause());
+      
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].classList.remove('active');
+      }
+      
+      for (let i = 0; i < dots.length; i++) {
+        dots[i].classList.remove('active');
+      }
+      
+      slides[videoSlideIndex - 1].classList.add('active');
+      dots[videoSlideIndex - 1].classList.add('active');
+    }
+
+    function changeVideoSlide(n) {
+      showVideoSlide(videoSlideIndex += n);
+    }
+
+    function currentVideoSlide(n) {
+      showVideoSlide(videoSlideIndex = n);
+    }
+
+    function startVideoSlideshow() {
+      videoInterval = setInterval(() => {
+        changeVideoSlide(1);
+      }, 8000);
+    }
+
+    // Initialize photo slideshow on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      showPhotoSlide(photoSlideIndex);
+      startPhotoSlideshow();
+    });
+
+    function openLightbox(imageSrc) {
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      lightboxImg.src = imageSrc;
+      lightbox.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      const lightbox = document.getElementById('lightbox');
+      lightbox.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+
+    // Close lightbox on escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeLightbox();
       }
     });
 
