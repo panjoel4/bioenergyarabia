@@ -1507,6 +1507,12 @@ button:hover{background:var(--accent-2)}
   flex-shrink: 0;
 }
 
+.btn-icon svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
 .btn-text {
   font-weight: 600;
   font-size: 0.95rem;
@@ -1614,27 +1620,31 @@ button:hover{background:var(--accent-2)}
 
 /* Photo/Video Slideshow */
 .photo-slideshow,
-.video-slideshow {
+.video-slideshow,
+.featured-slideshow {
   position: relative;
   max-width: 1100px;
   margin: 0 auto;
 }
 
 .photo-slides,
-.video-slides {
+.video-slides,
+.featured-slides {
   position: relative;
   width: 100%;
   overflow: hidden;
 }
 
 .photo-slide,
-.video-slide {
+.video-slide,
+.featured-slide {
   display: none;
   animation: fadeIn 0.5s;
 }
 
 .photo-slide.active,
-.video-slide.active {
+.video-slide.active,
+.featured-slide.active {
   display: block;
 }
 
@@ -1707,6 +1717,21 @@ button:hover{background:var(--accent-2)}
   box-shadow: var(--shadow);
   max-width: 800px;
   margin: 0 auto;
+}
+
+/* Featured Item - LinkedIn embed display */
+.featured-item {
+  background: var(--surface);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.featured-item iframe {
+  width: 100%;
+  border-radius: 8px;
 }
 
 .video-item video {
@@ -1842,6 +1867,10 @@ button:hover{background:var(--accent-2)}
   }
 
   .video-item {
+    padding: 16px;
+  }
+
+  .featured-item {
     padding: 16px;
   }
 }

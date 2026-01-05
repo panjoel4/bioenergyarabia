@@ -299,8 +299,9 @@
         
         <!-- Gallery Tabs -->
         <div class="gallery-tabs">
-          <button class="gallery-tab active" onclick="switchGalleryTab('photos')">Photos</button>
-          <button class="gallery-tab" onclick="switchGalleryTab('videos')">Videos</button>
+          <button class="gallery-tab active" data-tab="photos" onclick="switchGalleryTab('photos')">Photos</button>
+          <button class="gallery-tab" data-tab="featured" onclick="switchGalleryTab('featured')">Featured</button>
+          <button class="gallery-tab" data-tab="videos" onclick="switchGalleryTab('videos')">Videos</button>
         </div>
 
         <!-- Photo Gallery -->
@@ -424,6 +425,44 @@
             </div>
           </div>
         </div>
+
+        <!-- Featured Gallery (LinkedIn Posts) -->
+        <div id="featured-gallery" class="gallery-content">
+          <div class="featured-slideshow">
+            <div class="featured-slides">
+              <div class="featured-slide active">
+                <div class="featured-item">
+                  <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7401851300008923136?collapsed=1" height="601" width="504" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>
+                </div>
+              </div>
+              <div class="featured-slide">
+                <div class="featured-item">
+                  <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7403746308429152256?collapsed=1" height="566" width="504" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>
+                </div>
+              </div>
+              <div class="featured-slide">
+                <div class="featured-item">
+                  <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7409578165347463168?collapsed=1" height="669" width="504" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>
+                </div>
+              </div>
+              <div class="featured-slide">
+                <div class="featured-item">
+                  <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7380948531735498752?collapsed=1" height="669" width="504" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>
+                </div>
+              </div>
+            </div>
+            <!-- Navigation Controls -->
+            <button class="gallery-nav prev" onclick="changeFeaturedSlide(-1)">❮</button>
+            <button class="gallery-nav next" onclick="changeFeaturedSlide(1)">❯</button>
+            <!-- Dots Indicator -->
+            <div class="gallery-dots">
+              <span class="gallery-dot active" onclick="currentFeaturedSlide(1)"></span>
+              <span class="gallery-dot" onclick="currentFeaturedSlide(2)"></span>
+              <span class="gallery-dot" onclick="currentFeaturedSlide(3)"></span>
+              <span class="gallery-dot" onclick="currentFeaturedSlide(4)"></span>
+            </div>
+          </div>
+        </div>
       </section>
 
       <!-- Lightbox -->
@@ -531,6 +570,14 @@
           <a class="floating-btn demo" href="#contact-us" title="Schedule a product demonstration">
             <span class="btn-icon">📋</span>
             <span class="btn-text">Request a Demo</span>
+          </a>
+          <a class="floating-btn linkedin" href="https://www.linkedin.com/company/bioenergy-arabia/" target="_blank" rel="noopener noreferrer" title="Visit our LinkedIn">
+            <span class="btn-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+                <path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.036-1.852-3.036-1.853 0-2.136 1.445-2.136 2.939v5.666H9.35V9h3.414v1.561h.047c.476-.9 1.637-1.85 3.37-1.85 3.601 0 4.266 2.369 4.266 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zM7.119 20.452H3.553V9h3.566v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.727v20.545C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.273V1.727C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
+            </span>
+            <span class="btn-text">LinkedIn</span>
           </a>
         </div>
       </div>
@@ -676,30 +723,44 @@
     // Gallery functionality
     let photoSlideIndex = 1;
     let videoSlideIndex = 1;
+    let featuredSlideIndex = 1;
     let photoInterval;
     let videoInterval;
 
     function switchGalleryTab(tab) {
       const photoGallery = document.getElementById('photo-gallery');
       const videoGallery = document.getElementById('video-gallery');
+      const featuredGallery = document.getElementById('featured-gallery');
       const tabs = document.querySelectorAll('.gallery-tab');
       
       tabs.forEach(t => t.classList.remove('active'));
+      if (photoGallery) photoGallery.classList.remove('active');
+      if (videoGallery) videoGallery.classList.remove('active');
+      if (featuredGallery) featuredGallery.classList.remove('active');
+
+      const activeTab = document.querySelector(`.gallery-tab[data-tab="${tab}"]`);
+      if (activeTab) activeTab.classList.add('active');
+
+      // Stop any running auto-advance
+      clearInterval(photoInterval);
+      clearInterval(videoInterval);
+
+      // Pause videos when leaving the Videos tab
+      if (tab !== 'videos') {
+        const videos = document.querySelectorAll('#video-gallery video');
+        videos.forEach(v => v.pause());
+      }
       
       if (tab === 'photos') {
-        photoGallery.classList.add('active');
-        videoGallery.classList.remove('active');
-        tabs[0].classList.add('active');
-        // Stop video slideshow, start photo slideshow
-        clearInterval(videoInterval);
+        if (photoGallery) photoGallery.classList.add('active');
         startPhotoSlideshow();
-      } else {
-        videoGallery.classList.add('active');
-        photoGallery.classList.remove('active');
-        tabs[1].classList.add('active');
-        // Stop photo slideshow, no auto-advance for videos
-        clearInterval(photoInterval);
+      } else if (tab === 'videos') {
+        if (videoGallery) videoGallery.classList.add('active');
+        showVideoSlide(videoSlideIndex);
         // startVideoSlideshow(); // Disabled to allow manual control only
+      } else if (tab === 'featured') {
+        if (featuredGallery) featuredGallery.classList.add('active');
+        showFeaturedSlide(featuredSlideIndex);
       }
     }
 
@@ -773,6 +834,36 @@
       showVideoSlide(videoSlideIndex = n);
     }
 
+    // Featured slideshow functions (LinkedIn embeds)
+    function showFeaturedSlide(n) {
+      const slides = document.getElementsByClassName('featured-slide');
+      const dots = document.querySelectorAll('#featured-gallery .gallery-dot');
+
+      if (slides.length === 0) return;
+
+      if (n > slides.length) { featuredSlideIndex = 1 }
+      if (n < 1) { featuredSlideIndex = slides.length }
+
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].classList.remove('active');
+      }
+
+      for (let i = 0; i < dots.length; i++) {
+        dots[i].classList.remove('active');
+      }
+
+      slides[featuredSlideIndex - 1].classList.add('active');
+      if (dots[featuredSlideIndex - 1]) dots[featuredSlideIndex - 1].classList.add('active');
+    }
+
+    function changeFeaturedSlide(n) {
+      showFeaturedSlide(featuredSlideIndex += n);
+    }
+
+    function currentFeaturedSlide(n) {
+      showFeaturedSlide(featuredSlideIndex = n);
+    }
+
     // Video slideshow auto-advance disabled to allow users to watch videos
     // function startVideoSlideshow() {
     //   videoInterval = setInterval(() => {
@@ -783,6 +874,8 @@
     // Initialize photo slideshow on page load
     document.addEventListener('DOMContentLoaded', function() {
       showPhotoSlide(photoSlideIndex);
+      showVideoSlide(videoSlideIndex);
+      showFeaturedSlide(featuredSlideIndex);
       startPhotoSlideshow();
     });
 
