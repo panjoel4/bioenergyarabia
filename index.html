@@ -659,6 +659,7 @@
     }
 
     // Slideshow functionality
+    const PRODUCT_SLIDE_INTERVAL_MS = 8000; // increase to slow auto-advance
     let slideIndex = 1;
     
     function showSlide(n) {
@@ -694,7 +695,7 @@
     document.addEventListener('DOMContentLoaded', function() {
       setTimeout(() => {
         showSlide(slideIndex);
-        setInterval(() => changeSlide(1), 5000);
+        setInterval(() => changeSlide(1), PRODUCT_SLIDE_INTERVAL_MS);
       }, 500);
     });
 
