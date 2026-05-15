@@ -394,6 +394,46 @@ button:hover{background:var(--accent-2)}
   .dtv-paragraph { text-align: left; }
 }
 
+/* ===== Dealday subsection (image right, left-aligned text left) ===== */
+.dealday-section {
+  margin: 44px 0 28px 0; /* more vertical breathing room */
+}
+.dealday-grid {
+  display: grid;
+  /* give the image a bit more horizontal space than the text */
+  grid-template-columns: 45% 55%;
+  gap: 40px; /* increased gap for breathing room */
+  align-items: start;
+}
+.dealday-text {
+  text-align: left;
+  max-width: 88%;
+  padding-right: 12px;
+}
+.dealday-image {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+.dealday-image img {
+  max-width: 100%;
+  /* increase visual presence while staying inside the section */
+  max-height: 380px;
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+@media (max-width: 900px) {
+  .dealday-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .dealday-image {
+    justify-content: flex-start;
+    margin-top: 10px;
+  }
+}
+
 /* ===== Our Initiatives subsection ===== */
 .initiatives {
   margin: 36px 0 18px 0;
@@ -1296,12 +1336,36 @@ button:hover{background:var(--accent-2)}
   letter-spacing: 1px;
 }
 
-.team-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 32px;
-  max-width: 1000px;
-  margin: 0 auto;
+.team-subsection {
+  margin-top: 40px;
+}
+
+.team-subtitle {
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--accent);
+  text-align: center;
+  margin: 0 0 28px 0;
+  position: relative;
+}
+
+.team-subtitle::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 2px;
+  background: var(--accent);
+  margin: 8px auto 0;
+  border-radius: 2px;
+}
+
+.team-row {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  margin-bottom: 28px;
 }
 
 .team-member {
@@ -1312,6 +1376,8 @@ button:hover{background:var(--accent-2)}
   text-align: center;
   box-shadow: var(--shadow);
   transition: transform 0.3s, box-shadow 0.3s;
+  width: 220px;
+  flex-shrink: 0;
 }
 
 .team-member:hover {
@@ -1376,17 +1442,21 @@ button:hover{background:var(--accent-2)}
 }
 
 @media (max-width: 768px) {
-  .team-grid {
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 24px;
+  .team-row {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .team-member {
+    width: 160px;
+    padding: 18px;
   }
   
   .team-photo {
     width: 120px;
     height: 120px;
-
-
-}  }
+  }
+}
 
 /* ===== Floating CTA Buttons ===== */
 .floating-cta {
